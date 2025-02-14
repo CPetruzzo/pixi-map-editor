@@ -1,0 +1,90 @@
+[
+  {
+    "type": "floor",
+    "texture": "grass",
+    "x": -850,
+    "y": 50,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "floor",
+    "texture": "grass",
+    "x": -750,
+    "y": 50,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "floor",
+    "texture": "grass",
+    "x": -800,
+    "y": 50,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "floor",
+    "texture": "grass",
+    "x": -700,
+    "y": 50,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "floor",
+    "texture": "grass",
+    "x": -500,
+    "y": 50,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "floor",
+    "texture": "grass",
+    "x": -500,
+    "y": 50,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "floor",
+    "texture": "grass",
+    "x": -600,
+    "y": 50,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "floor",
+    "texture": "grass",
+    "x": -650,
+    "y": 50,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "floor",
+    "texture": "grass",
+    "x": -550,
+    "y": 50,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "player",
+    "texture": "player",
+    "x": -750,
+    "y": 0,
+    "width": 50,
+    "height": 50
+  },
+  {
+    "type": "flag",
+    "texture": "flag",
+    "x": -500,
+    "y": 0,
+    "width": 50,
+    "height": 50
+  }
+]

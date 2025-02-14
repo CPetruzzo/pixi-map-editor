@@ -1,0 +1,596 @@
+// ! THIS FILE IS A MAGICAL JSON THAT CAN HAVE COMMENTS.
+// It will be turned into a regular json file during the build process.
+// PLEASE DON'T REMOVE THE .jsonc extension!
+// ! PLEASE REMEMBER TO TELL YOUR SCENES WHICH BUNDLES THEY NEED WITH THE `public static readonly BUNDLES: string[] = ["bundleName"]` PROPERTY.
+{
+	"bundles": [
+		// * Example of bundle with assets object
+		// {
+		// 		"name": "bundleObjectsName",
+		// 		"assets": {
+		// 			! ATLAS APPEAR INSIDE PACKAGES WITH THE SAME NAME AUTOMAGICALLY!
+		// 			"assetname": "./path/to/asset.{png,webp,avif}",
+		// 			"assetnameWithMetadata": {
+		// 				"src": "./path/to/asset.png", // can NOT use blobs here!
+		// 				"data":{"lang": "en"}
+		// 			}
+		// 		}
+		// * Example of bundle with assets array
+		// {
+		// 	"name": "bundleArrayName",
+		// 		"assets": [
+		// 			! ATLAS APPEAR INSIDE PACKAGES WITH THE SAME NAME AUTOMAGICALLY!
+		// 			{
+		//				"name": "assetname",
+		//				"srcs": "./path/to/asset.{png,webp,avif}"
+		//			}
+		// 			{
+		//				"name": "assetnameWithMetadata",
+		// 				"srcs": "./path/to/asset.{png,webp,avif}", // You CAN use blobs here!
+		// 				"data":{
+		//					"lang": "en"
+		//				}
+		// 			}
+		// 		]
+		// },
+		{
+			"name": "initialLoad",
+			"assets": [
+				{
+					"name": "strings-en",
+					"srcs": "./lang/en.i18.json"
+				},
+				// {
+				// 	"name": "preloaderVideo",
+				// 	"srcs": "./preloader/initialvideo.mp4" // Aquí se agrega el archivo de video
+				// },
+				{
+					"name": "defaultFont",
+					"srcs": "./fonts/Rounded_Elegance.{woff2,woff,ttf}",
+					"data": {
+						"family": "Rounded Elegance",
+						"weight": [
+							"normal",
+							"bold"
+						]
+					}
+				},
+				{
+					"name": "RunFallFont",
+					"srcs": "./fonts/Darling Coffee.ttf",
+					"data": {
+						"family": "Darling Coffee",
+						"weight": [
+							"normal",
+							"bold"
+						]
+					}
+				},
+				{
+					"name": "BoardFont",
+					"srcs": "./fonts/DK Boarding House I.otf",
+					"data": {
+						"family": "DK Boarding House I",
+						"weight": [
+							"normal",
+							"bold"
+						]
+					}
+				},
+				{
+					"name": "BoardFont2",
+					"srcs": "./fonts/DK Boarding House III.otf",
+					"data": {
+						"family": "DK Boarding House III",
+						"weight": [
+							"normal",
+							"bold"
+						]
+					}
+				},
+				{
+					"name": "defaultSDFFont",
+					"srcs": "./fonts/roundedelegance.json"
+				}
+			]
+		},
+		{
+			"name": "sfx",
+			"assets": {
+				"beep": "./sfx/beep.mp3",
+				"run": "./sfx/run.mp3",
+				"potion": "./sfx/GamePotion.mp3"
+			}
+		},
+		{
+			"name": "runfallsfx",
+			"assets": {
+				"sound1": "./sfx/runfall/bubble-popping.mp3",
+				"sound2": "./sfx/runfall/system-notification.mp3",
+				"sound3": "./sfx/runfall/notification-sound.mp3",
+				"sound4": "./sfx/runfall/notification-beep.mp3",
+				"sound5": "./sfx/runfall/level-up-2.mp3",
+				"sound6": "./sfx/runfall/icon-02.mp3",
+				"sound7": "./sfx/runfall/high-speed-2.mp3",
+				"sound8": "./sfx/runfall/going-to-the-next-level.mp3",
+				"sound9": "./sfx/runfall/enchanted-spell-casting.mp3",
+				"sound10": "./sfx/runfall/charming-twinkle-sound-for-fantasy-and-magic.mp3",
+				"sound11": "./sfx/runfall/camera-shutter.mp3"
+			}
+		},
+		{
+			"name": "music",
+			"assets": {
+				"battle": "./music/battle.mp3",
+				"music": "./music/musical.mp3",
+				"haunting": "./music/hauntingloli.mp3"
+			}
+		},
+		{
+			"name": "musicShooter",
+			"assets": {
+				"futurecopOST": "./music/futurecop.mp3"
+			}
+		},
+		{
+			"name": "package-1",
+			"assets": {
+				"package 1 background": "./img/big_placeholder/background-1.jpg",
+				"big_background": "./img/big_placeholder/bg_game.png",
+				"mask_demo": "./img/big_placeholder/mask_demo@0.5x.png", // @0.5x means 50% of the original size, pixi will internally upscale and you will never know!
+				"bar": "./img/bar.png",
+				"barBG": "./img/bgBar.png",
+				"loliLose": "./models/LOLI.png",
+				"PLAY": "./models/PLAY.jpg",
+				"loliGameOver": "./models/LOLIGAMEOVER.png",
+				"LDTK_IMG": "./img/TopDown_by_deepnight.png",
+				"DODGE-BACKGROUND": "./img/BACKGROUND.jpg",
+				"DODGE-BACKGROUND2": "./img/BACKGROUND2.jpg",
+				"player1": "./img/player1.png",
+				"player2": "./img/player2.png",
+				"player3": "./img/player3.png",
+				"powerup": "./img/powerup.png",
+				"enemy": "./img/enemy.png",
+				"coin": "./img/monedita.png",
+				"obstacule": "./img/obstacule.png",
+				"runfall": "./img/runfall.png",
+				"playbutton": "./img/playbutton.png",
+				"popupimg": "./img/popupimg.jpg",
+				"soundbtn": "./img/soundbtn.png"
+			}
+		},
+		{
+			"name": "aurora",
+			"assets": {
+				"image1816": "./img/aurora/image1816.png",
+				"image1982": "./img/aurora/image1982.png",
+				"player1": "./img/player1.png",
+				"player2": "./img/player2.png",
+				"player3": "./img/player3.png"
+			}
+		},
+		{
+			"name": "bubble",
+			"assets": {
+				"bar_1": "./img/ggj/bar_1.png",
+				"bar_2": "./img/ggj/bar_2.png",
+				"bubble": "./img/ggj/burbuja.png",
+				"bubbleLB": "./img/ggj/bubbleLB.jpg",
+				"bubbleknob": "./img/ggj/bubbleknob.png",
+				"knife": "./img/ggj/knife.png",
+				"oldKnife": "./img/ggj/knife2.png",
+		 		"frame": "./img/ggj/frame1.png",
+		 		"bubbleFrame": "./img/ggj/frame.png",
+		 		"play": "./img/ggj/play.png",
+				"kitchen": "./img/ggj/kitchen.jpg",
+				"bubbleParticle": "./img/ggj/Bubbles50px.png",
+				"continue": "./img/ggj/continuebutton.png",
+				"title": "./img/ggj/burbujeandotitle.jpg",
+				"sfxBubble": "./sfx/runfall/bubble-popping.mp3",
+				"bgMusic": "./img/ggj/wizard.wav",
+				"intro": "./music/burbujeandoando/intro.mp3",
+				"bouncy": "./music/burbujeandoando/bouncy.mp3",
+				"pinkocean": "./music/burbujeandoando/pinkocean.mp3",
+				"sfxBubblePop": "./sfx/ggj/bubble.wav",
+				"sfxLose": "./sfx/ggj/lose.mp3",
+				"sfxWhoosh": "./sfx/ggj/woosh.wav"
+					
+			}
+		},
+		{
+			"name": "towerdefense",
+			"assets": {
+				"enemy": "./img/towerdefense/towerEnemy1.png",
+				"enemy2": "./img/towerdefense/towerEnemy2.png",
+				"enemy3": "./img/towerdefense/towerEnemy3.png",
+				"enemy4": "./img/towerdefense/towerEnemy4.png",
+				"enemy5": "./img/towerdefense/towerEnemy5.png",
+				"enemy6": "./img/towerdefense/towerEnemy6.png",
+
+				"towerLevel1A": "./img/towerdefense/towers/2/0.png",
+				"towerLevel1B": "./img/towerdefense/towers/2/1.png",
+				"towerLevel1C": "./img/towerdefense/towers/2/2.png",
+				"towerLevel1D": "./img/towerdefense/towers/2/3.png",
+				
+				"towerLevel2A": "./img/towerdefense/towers/3/0.png",
+				"towerLevel2B": "./img/towerdefense/towers/3/1.png",
+				"towerLevel2C": "./img/towerdefense/towers/3/2.png",
+				"towerLevel2D": "./img/towerdefense/towers/3/3.png",
+				
+				"towerLevel3A": "./img/towerdefense/towers/4/0.png",
+				"towerLevel3B": "./img/towerdefense/towers/4/1.png",
+				"towerLevel3C": "./img/towerdefense/towers/4/2.png",
+				"towerLevel3D": "./img/towerdefense/towers/4/3.png",
+				
+				"towerLevel4A": "./img/towerdefense/towers/5/0.png",
+				"towerLevel4B": "./img/towerdefense/towers/5/1.png",
+				"towerLevel4C": "./img/towerdefense/towers/5/2.png",
+				"towerLevel4D": "./img/towerdefense/towers/5/3.png",
+
+				"towerLevel5A": "./img/towerdefense/towers/6/0.png",
+				"towerLevel5B": "./img/towerdefense/towers/6/1.png",
+				"towerLevel5C": "./img/towerdefense/towers/6/2.png",
+				"towerLevel5D": "./img/towerdefense/towers/6/3.png",
+
+				"towerLevel6A": "./img/towerdefense/towers/7/0.png",
+				"towerLevel6B": "./img/towerdefense/towers/7/1.png",
+				"towerLevel6C": "./img/towerdefense/towers/7/2.png",
+				"towerLevel6D": "./img/towerdefense/towers/7/3.png",
+
+				"projectile": "./img/towerdefense/proyectile.png",
+				"bg": "./img/towerdefense/bg.jpg",
+				"grass": "./img/towerdefense/grass.jpg",
+				"mainBG": "./img/towerdefense/mainBG.jpg",
+				"tdBG": "./img/towerdefense/tdframe.png",
+				"uiFrame": "./img/towerdefense/tdframe2.png",
+				"wood": "./img/towerdefense/block.png",
+				"resetButton": "./img/towerdefense/resetButton.png",
+				"resetButtonPressed": "./img/towerdefense/resetButtonPressed.png",
+				"bgExtended": "./img/towerdefense/bgExtended.jpg",
+				"flag": "./img/towerdefense/flag.png",
+				"1": "./img/towerdefense/1.png",
+				"2": "./img/towerdefense/2.png",
+				"3": "./img/towerdefense/3.png",
+				"4": "./img/towerdefense/4.png",
+				"5": "./img/towerdefense/5.png",
+				"6": "./img/towerdefense/6.png"
+				
+			}
+		},
+		{
+			"name": "package-2",
+			"assets": {
+				"loli": "./models/cheers1.png",
+				"pocho": "./models/cheers2.png",
+				"package 2 background": "./img/big_placeholder/background-2.jpg"
+			}
+		},
+		{
+			"name": "storagescene",
+			"assets": {
+				"sword": "./img/player1.png",
+				"shield": "./img/player2.png"
+			}
+		},
+		{
+			"name": "cachoworld",
+			"assets": {
+				"viking": "./img/cachoworld/viking.png",
+				"player": "./img/player1.png",
+				"background": "./img/cachoworld/map1.png",
+
+				"bouncing0": "./img/cachoworld/BouncingSpritesheet/0.png",
+				"bouncing1": "./img/cachoworld/BouncingSpritesheet/1.png",
+				"bouncing2": "./img/cachoworld/BouncingSpritesheet/2.png",
+				"bouncing3": "./img/cachoworld/BouncingSpritesheet/3.png",
+				"bouncing4": "./img/cachoworld/BouncingSpritesheet/4.png",
+				"bouncing5": "./img/cachoworld/BouncingSpritesheet/5.png",
+				"bouncing6": "./img/cachoworld/BouncingSpritesheet/5.png",
+
+				"idle0": "./img/cachoworld/IdleSpritesheet/0.png",
+				"idle1": "./img/cachoworld/IdleSpritesheet/1.png",
+				"idle2": "./img/cachoworld/IdleSpritesheet/2.png",
+				"idle3": "./img/cachoworld/IdleSpritesheet/3.png",
+				"idle4": "./img/cachoworld/IdleSpritesheet/4.png",
+				"idle5": "./img/cachoworld/IdleSpritesheet/5.png"
+			}
+		},
+		{
+			"name": "fallrungame",
+			"assets": {
+				"package 1 background": "./img/image.jpg",
+				"DODGE-BACKGROUND": "./img/BACKGROUND.jpg",
+				"DODGE-BACKGROUND2": "./img/BACKGROUND2.jpg",
+				"player1": "./img/player1.png",
+				"player2": "./img/player2.png",
+				"player3": "./img/player3.png",
+				"powerup": "./img/powerup.png",
+				"star": "./img/star.png",
+				"enemy": "./img/enemy.png",
+				"coin": "./img/monedita.png",
+				"obstacule": "./img/obstacule.png",
+				"sound_BGM": "./sfx/sceneBGM.mp3",
+				"sound_collectable": "./sfx/uiCollectable.mp3",
+				"sound_award": "./sfx/Fruitcollect1.wav",
+				"sound_big_award": "./sfx/BigEggcollect1.wav",
+				"sound_hit": "./sfx/Bosshit1.wav",
+				"sound_cancel": "./sfx/Cancel1.wav",
+				"sound_confirm": "./sfx/Confirm1.wav",
+				"sound_block": "./sfx/BlockBreak1.wav",
+				"smokeTexture": "./img/CartoonSmoke.png",
+				"fireTexture": "./img/Fire.png",
+				"sparksTexture": "./img/Sparks.png",
+				"frame": "./img/Laterales.png",
+				"highscore": "./img/highscore_popup.png",
+				"meteorEnemy": "./img/runfall/enemy.png",
+				"comet": "./img/runfall/comet.png",
+				"medkit": "./img/runfall/medkit.png",
+				"capsule": "./img/runfall/capsule.png",
+				"runfallcoin": "./img/runfall/runfallcoin.png",
+				"bronze1": "./img/runfall/bronze_1.png",
+				"spacestar": "./img/runfall/spacestar.png",
+				"asteroidFragment": "./img/runfall/asteroidFragment.png",
+				"astro1": "./img/runfall/astro1.png",
+				"astro2": "./img/runfall/astro2.png",
+				"astro3": "./img/runfall/astro3.png",
+				"astro4": "./img/runfall/astro4.png",
+				"astro5": "./img/runfall/astro5.png",
+				"medkit1": "./img/runfall/medkitspace1.png",
+				"golditem1": "./img/runfall/coolgolditem.png",
+				"golditem2":  "./img/runfall/goldmoon.png",
+				"golditem3":  "./img/runfall/goldstar.png",
+				"soundOn":  "./img/runfall/soundOn.png",
+				"soundOff":  "./img/runfall/soundOff.png",
+				"soundBG":  "./img/runfall/fondoknob.png",
+				"soundKnob":  "./img/runfall/soundknob.png",
+				"config":  "./img/runfall/config.png",
+				"spaceship":  "./img/runfall/starship.png",
+				"shoot":  "./img/runfall/shoot.png",
+				"return": "./img/runfall/return.png"
+			}
+		},
+		{
+			"name": "basquet",
+			"assets": {
+				"basquetball": "./img/basquetball/basquetball.png",
+				"basquetcourt": "./img/basquetball/court.webp",
+				"basquetcourtFullScreenHQ": "./img/basquetball/court.jpg",
+				"basquetcourtFullScreen": "./img/basquetball/courtHQ.jpg",
+				"basketnet": "./img/basquetball/basketnet.png",
+				"basketrim": "./img/basquetball/rim.png",
+				"cachobasket": "./img/basquetball/cachobasket.jpg",
+				"cachobasketball": "./img/basquetball/cachobasketball.jpg",
+				"scoreFrame": "./img/basquetball/scoreFrame.png",
+				"framebasket": "./img/basquetball/framebasket.png",
+				"emptyframe": "./img/basquetball/emptyframe.png",
+				"returnbasket": "./img/basquetball/returnbasket.png",
+				"basketballplayer": "./img/basquetball/basketballplayer.png",
+				"gameover": "./img/basquetball/gameover.jpg",
+				"gameoverBG": "./img/basquetball/gameoverBG.png",
+				"cachobasketBAR": "./img/basquetball/cachobasketBAR.png",
+				"cachobasketHQ": "./img/basquetball/cachobasketHQ.jpg",
+				"cachoknob": "./img/basquetball/cachoknob.png",
+				"info": "./img/basquetball/info.png",
+				"play": "./img/basquetball/play.png",
+				"pause": "./img/basquetball/pause.png",
+				"pauseOn": "./img/basquetball/pauseOn.png",
+				"pauseOff": "./img/basquetball/pauseOff.png",
+				"sound": "./img/basquetball/sound.png",
+				"soundOff": "./img/basquetball/soundOff.png",
+				"soundoffbase": "./img/basquetball/soundoffbase.png",
+				"soundToggle": "./img/basquetball/soundToggle.png",
+				"soundToggleOff": "./img/basquetball/soundToggleOff.png",
+				"continueBTN": "./img/basquetball/continueBTN.png",
+
+				"bounce": "./sfx/basketballBounce.wav",
+				"hitRim": "./sfx/basketballHitRim.wav",
+				"courtBGM": "./sfx/basketballBGM.wav"
+			}
+		},
+		{
+			"name": "topdown",
+			"assets": {
+				"package 1 background": "./img/image.jpg"
+			}
+		},
+		{
+			"name": "playWithSounds",
+			"assets": {
+				"farm-sfx": "./sfx/farm/farm-sfx.mp3",
+				"birds-sfx": "./sfx/farm/birds-sfx.mp3",
+				"cow-sfx": "./sfx/farm/cow-sfx.mp3",
+				"duck-sfx": "./sfx/farm/duck-sfx.mp3",
+				"fire-sfx": "./sfx/farm/fire-sfx.mp3",
+				"horse-sfx": "./sfx/farm/horse-sfx.mp3",
+				"pig-sfx": "./sfx/farm/pig-sfx.mp3",
+				"sheep-sfx": "./sfx/farm/sheep-sfx.mp3",
+				"windTransition-sfx": "./sfx/farm/windTransition-sfx.mp3",
+				"transitionDuck-sfx": "./sfx/farm/transitionDuck-sfx.mp3",
+				"success-sfx": "./sfx/farm/success-sfx.mp3",
+				"beep": "./sfx/farm/beep.mp3",
+				"rooster-sfx": "./sfx/farm/rooster-sfx.mp3",
+				"chooserMusic": "./music/chooserMusic.mp3",
+				
+				"BG0": "./img/BG/BG0.jpg",
+				"BG9": "./img/BG/BG9.png",
+
+				"frame1": "./img/farmAnimals/frame1.png",
+				"frame2": "./img/farmAnimals/frame2.png",
+
+				"TutorialBody2": "./img/farmAnimals/TutorialBody2.png",
+				"TutorialButton": "./img/farmAnimals/TutorialButton.png",
+
+				"button_plus": "./img/farmAnimals/button_plus.png",
+				"button_minus": "./img/farmAnimals/button_minus.png",
+				"button_1": "./img/farmAnimals/button_1.png",
+				"button_3": "./img/farmAnimals/button_3.png",
+				"btnPlay": "./img/farmAnimals/btnPlay.png",
+				"questionMark": "./img/farmAnimals/questionMark.png",
+
+				"chooserBirds": "./img/farmAnimals/birds.png",
+				"chooserSheep": "./img/farmAnimals/sheep.png",
+
+				"b_1": "./img/farmAnimals/b_1.png",
+				"b_2": "./img/farmAnimals/b_2.png",
+				"b_3": "./img/farmAnimals/b_3.png",
+				"b_4": "./img/farmAnimals/b_4.png",
+				"b_5": "./img/farmAnimals/b_5.png",
+				"b_6": "./img/farmAnimals/b_6.png",
+				"b_7": "./img/farmAnimals/b_7.png",
+				"b_8": "./img/farmAnimals/b_8.png",
+				
+				"farmAnimals0": "./img/farmAnimals/farmAnimals0.png",
+				"farmAnimals1": "./img/farmAnimals/farmAnimals1.png",
+				"farmAnimals2": "./img/farmAnimals/farmAnimals2.png",
+				"farmAnimals3": "./img/farmAnimals/farmAnimals3.png",
+				"farmAnimals4": "./img/farmAnimals/farmAnimals4.png",
+				"farmAnimals5": "./img/farmAnimals/farmAnimals5.png",
+				"farmAnimals6": "./img/farmAnimals/farmAnimals6.png",
+
+				"horseCloud": "./img/farmAnimals/horse-cloud.png",
+				"cowCloud": "./img/farmAnimals/cowCloud.png",
+				"duckCloud": "./img/farmAnimals/duckCloud.png",
+				"sheepCloud": "./img/farmAnimals/sheep.png",
+				"rooster": "./img/farmAnimals/rooster.png",
+				"pig": "./img/farmAnimals/pig.png",
+
+				"bar_1": "./img/farmAnimals/bar_1.png",
+				"s1": "./img/farmAnimals/s1.png",
+				"bar_2": "./img/farmAnimals/bar_2.png"
+
+			}
+		},
+		{
+			"name": "3d",
+			"assets": {
+				"duckModel": "./models/duck/Duck.gltf",
+				"dancingStormtrooper": "./models/dancing-stormtrooper.glb",
+				"house": "./models/house.glb",
+				"cublosion": "./models/cublosion.glb",
+				"futurecop": "./models/futurecop.glb",
+				"futurecoprunforward": "./models/futurecop.glb",
+				"gridTexture": "./img/big_placeholder/bg_game.png",
+				"impala": "models/impala/impala.gltf",
+				"road": "models/road/road.gltf",
+				"hauntedhouse": "models/hauntedhouse/hauntedhouse.gltf",
+				"firstperson": "models/person/firstperson/firstperson.gltf",
+				"rifle": "models/animated_rifle/rifle.gltf",
+				"dragon": "models/dragon/scene.gltf",
+				"idle1": "models/person/idle1/idle1.gltf",
+				"idle2": "models/person/idle2/idle2.gltf",
+				"running": "models/person/running/running.gltf",
+				"character": "models/character/scene.gltf",
+				"loli": "./models/cheers1.png"
+			}
+		},
+		{
+			"name": "3dshooter",
+			"assets": {
+				"wallTexture": "./img/futurecop/wallTexture.jpg",
+				"title": "./img/futurecop/title.png",
+				"aimbutton": "./img/futurecop/aimbutton.png",
+				"shootbutton": "./img/futurecop/shootbutton.png",
+				"beam": "./sfx/beam.wav",
+				"play": "./img/ggj/play.png",
+				"house": "./models/house.glb",
+				"car_fire": "./models/car_on_fire__animation.glb",
+				"fire": "./models/animated_fire.glb",
+				"ocean": "./models/ocean_sky_sphere.glb",
+
+				"cublosion": "./models/cublosion.glb",
+				"torchsfx": "./sfx/torchsfx.mp3",
+				"switch": "./sfx/switch.mp3",
+				"gate-heavy": "./sfx/gate-heavy.mp3",
+				"cyberpunk_city": "./models/cyberpunk_city.glb",
+				"futurecop": "./models/futurecop.glb",
+				"futurecoprunforward": "./models/futurecoprunforward.glb"
+			}
+		},
+		{
+			"name": "dager",
+			"assets": {
+				"dagerBG": "./img/dager/dagerBG.webp",
+				"blackboard": "./img/engine/blackboard2.png"
+			}
+		},
+		{
+			"name": "construction",
+			"assets": {
+				"grass": "./img/construction/floor.jpg",
+				"blackboard": "./img/engine/blackboard2.png",
+				"wood": "./img/construction/wall.png",
+				"flag": "./img/towerdefense/flag.png",
+				"player": "./img/player1.png"
+			}
+		},
+		{
+			"name": "engine",
+			"assets": {
+				"blackboard2": "./img/engine/blackboard.png",
+				"blackboard": "./img/engine/blackboard2.png"
+			}
+		},
+		{
+			"name": "joystick",
+			"assets": {
+				"inner": "./img/joystick/joystick-handle.png",
+				"outer": "./img/joystick/joystick.png",
+				"big_background": "./img/joystick/bg_game.png",
+				"collectable": "./img/joystick/Collectable.png"
+			}
+		},
+		{
+			"name": "ggj",
+			"assets": {
+				"jump00": "./img/bluewizard/2BlueWizardJump/CharaWizardJump_00000.png",
+				"jump01": "./img/bluewizard/2BlueWizardJump/CharaWizardJump_00001.png",
+				"jump02": "./img/bluewizard/2BlueWizardJump/CharaWizardJump_00002.png",
+				"jump03": "./img/bluewizard/2BlueWizardJump/CharaWizardJump_00003.png",
+				"jump04": "./img/bluewizard/2BlueWizardJump/CharaWizardJump_00004.png",
+				"jump05": "./img/bluewizard/2BlueWizardJump/CharaWizardJump_00005.png",
+				"jump06": "./img/bluewizard/2BlueWizardJump/CharaWizardJump_00006.png",
+				"jump07": "./img/bluewizard/2BlueWizardJump/CharaWizardJump_00007.png",
+				"idle00": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00000.png",
+				"idle01": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00001.png",
+				"idle02": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00002.png",
+				"idle03": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00003.png",
+				"idle04": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00004.png",
+				"idle05": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00005.png",
+				"idle06": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00006.png",
+				"idle07": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00007.png",
+				"idle08": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00008.png",
+				"idle09": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00009.png",
+				"idle10": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00010.png",
+				"idle11": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00011.png",
+				"idle12": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00012.png",
+				"idle13": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00013.png",
+				"idle14": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00014.png",
+				"idle15": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00015.png",
+				"idle16": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00016.png",
+				"idle17": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00017.png",
+				"idle18": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00018.png",
+				"idle19": "./img/bluewizard/2BlueWizardIdle/Chara - BlueIdle00019.png",
+				"walk00": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00000.png",
+				"walk01": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00001.png",
+				"walk02": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00002.png",
+				"walk03": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00003.png",
+				"walk04": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00004.png",
+				"walk05": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00005.png",
+				"walk06": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00006.png",
+				"walk07": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00007.png",
+				"walk08": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00008.png",
+				"walk09": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00009.png",
+				"walk10": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00010.png",
+				"walk11": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00011.png",
+				"walk12": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00012.png",
+				"walk13": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00013.png",
+				"walk14": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00014.png",
+				"walk15": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00015.png",
+				"walk16": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00016.png",
+				"walk17": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00017.png",
+				"walk18": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00018.png",
+				"walk19": "./img/bluewizard/2BlueWizardWalk/Chara_BlueWalk00019.png"
+			}
+		}
+	]
+}
