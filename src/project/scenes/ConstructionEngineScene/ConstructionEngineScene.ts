@@ -8,7 +8,10 @@ import { BlackboardManager } from "./blackboard/BlackboardManager";
 import { EntityManager } from "./entities/EntityManager";
 import { FileSystemManager } from "./files/FileSystemManager";
 import { ToolPalette } from "./tools/ToolPalette";
-import type { CustomSprite } from "../WebEngine/ConstructionEngineScene";
+
+export interface CustomSprite extends Sprite {
+	entityIndex?: number;
+}
 
 export class ConstructionEngineScene extends PixiScene {
 	private backgroundContainer: Container;
