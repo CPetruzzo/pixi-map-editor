@@ -11,6 +11,7 @@ import Stats from "stats.js";
 import { Ticker } from "pixi.js";
 import { SceneEvents } from "./SceneEvents";
 import { Assets } from "pixi.js";
+import type { PlacedEntity } from "../../project/scenes/ConstructionEngineScene/entities/EntityManager";
 
 /** The constructor function of T. It has no arguments */
 export type EmptyConstructor<T> = new () => T;
@@ -25,6 +26,7 @@ export class SceneManager<R extends IRenderer> {
 	 * Should audio pause when we lose focus?
 	 */
 	public pauseSoundOnFocusLost: boolean = true;
+	public lastLoadedLevel: PlacedEntity[] | null = null;
 
 	/**
 	 * Should the update method pause when we lose focus?

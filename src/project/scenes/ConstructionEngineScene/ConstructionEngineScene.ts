@@ -3,11 +3,14 @@ import type { Graphics } from "pixi.js";
 import { Container, Sprite, Text } from "pixi.js";
 import { PixiScene } from "../../../engine/scenemanager/scenes/PixiScene";
 import { ScaleHelper } from "../../../engine/utils/ScaleHelper";
-import { pixiRenderer } from "../../..";
+import { Manager, pixiRenderer } from "../../..";
 import { BlackboardManager } from "./blackboard/BlackboardManager";
+import type { PlacedEntity } from "./entities/EntityManager";
 import { EntityManager } from "./entities/EntityManager";
 import { FileSystemManager } from "./files/FileSystemManager";
 import { ToolPalette } from "./tools/ToolPalette";
+import { SideScrollerScene } from "./SideScrollerScene";
+import { TopDownScene } from "./TopDownScene";
 
 export interface CustomSprite extends Sprite {
 	entityIndex?: number;
@@ -25,14 +28,18 @@ export class ConstructionEngineScene extends PixiScene {
 
 	public currentTool: string | null = null;
 	public preview: Graphics | null = null;
-
 	public static readonly BUNDLES = ["construction"];
+
+	// Flag que indica el modo de juego: "sidescroller" o "topdown"
+	private gameMode: "sidescroller" | "topdown" = "sidescroller";
+
 	private selectedPlayer: Sprite;
 	private selectedFlag: Sprite | null = null;
 
 	// Panel para cargar proyectos guardados
 	private loadPanel: Container | null = null;
 	private loadPanelVisible: boolean = false;
+	private loadPanelContainer: Container = new Container();
 
 	constructor() {
 		super();
@@ -56,15 +63,22 @@ export class ConstructionEngineScene extends PixiScene {
 		this.entityManager = new EntityManager(this.blackboard);
 		this.fileSystemManager = new FileSystemManager();
 
+		// La ToolPalette ahora puede incluir un botón para alternar el modo ("Toggle Mode")
 		this.toolPalette = new ToolPalette(this.toolPaletteContainer, (tool: string) => this.onToolSelected(tool));
 		this.toolPalette.createToolPalette();
 
 		this.setupInteractions();
+
+		this.loadPanelContainer.name = "loadpanelcontainer";
+		this.addChild(this.loadPanelContainer);
 	}
 
 	private onToolSelected(tool: string): void {
 		if (tool === "export") {
-			this.fileSystemManager.exportStateToFile(this.entityManager.saveState()).catch(console.error);
+			// Se pide al usuario un nombre para el archivo
+			const defaultName = "nivel.json";
+			const filename = window.prompt("Ingresa el nombre del archivo", defaultName) || defaultName;
+			this.fileSystemManager.exportStateToFile(this.entityManager.saveState(), filename).catch(console.error);
 		} else if (tool === "load") {
 			this.toggleLoadPanel().catch(console.error);
 		} else if (tool === "clean") {
@@ -73,8 +87,23 @@ export class ConstructionEngineScene extends PixiScene {
 			this.exportToPNG();
 		} else if (tool === "saveDirect") {
 			this.fileSystemManager.saveStateDirectly(this.entityManager.saveState()).catch(console.error);
+		} else if (tool === "toggleMode") {
+			// Alterna el modo de juego
+			this.gameMode = this.gameMode === "sidescroller" ? "topdown" : "sidescroller";
+			console.log("Game mode toggled to:", this.gameMode);
+			// Actualiza el texto del botón para reflejar el modo actual
+			// Por ejemplo, si actualmente es sidescroller, el botón indicará "Switch to TopDown"
+			const newText = this.gameMode === "sidescroller" ? "Sidescroller" : "TopDown";
+			this.toolPalette.updateToggleModeButtonText(newText);
+		} else if (tool === "test") {
+			// Dependiendo del modo, cambia a la escena correspondiente
+			if (this.gameMode === "sidescroller") {
+				Manager.changeScene(SideScrollerScene);
+			} else {
+				// Asegurate de tener implementada TopDownGameScene y de importarla
+				Manager.changeScene(TopDownScene);
+			}
 		} else {
-			// "flag" para colocar bandera, "flagSelect" para moverla
 			this.currentTool = tool;
 			document.body.style.cursor = "crosshair";
 		}
@@ -128,7 +157,6 @@ export class ConstructionEngineScene extends PixiScene {
 			} else if (this.currentTool === "player") {
 				this.entityManager.placeEntity("player", snapped.x, snapped.y);
 			} else if (this.currentTool === "flag") {
-				// Colocar bandera
 				this.entityManager.placeEntity("flag", snapped.x, snapped.y);
 			} else if (this.currentTool === "playerSelect") {
 				if (this.selectedPlayer) {
@@ -143,7 +171,6 @@ export class ConstructionEngineScene extends PixiScene {
 				}
 			} else if (this.currentTool === "flagSelect") {
 				if (this.selectedFlag) {
-					// Actualizar datos de la bandera en el registro
 					const customSprite = this.selectedFlag as CustomSprite;
 					const index = customSprite.entityIndex;
 					if (index !== undefined) {
@@ -163,7 +190,6 @@ export class ConstructionEngineScene extends PixiScene {
 		for (const child of this.blackboard.children) {
 			if (child instanceof Sprite && child.x === x && child.y === y && child.name === "player") {
 				this.selectedPlayer = child;
-				// Agregamos un tinte para indicar selección
 				child.tint = 0xffff00;
 				break;
 			}
@@ -191,10 +217,7 @@ export class ConstructionEngineScene extends PixiScene {
 			this.loadPanel = null;
 		}
 		this.loadPanel = new Container();
-		// Posicionar el panel debajo de los botones
-		this.loadPanel.x = -50;
-		this.loadPanel.y = 50;
-		this.toolPaletteContainer.addChild(this.loadPanel);
+		this.loadPanelContainer.addChild(this.loadPanel);
 
 		try {
 			const folderHandle = await this.fileSystemManager.getOrCreateSavedProjectsFolder();
@@ -211,11 +234,17 @@ export class ConstructionEngineScene extends PixiScene {
 					});
 					fileText.x = 0;
 					fileText.y = yPos;
+					fileText.anchor.set(0.5);
 					fileText.interactive = true;
 					fileText.on("pointerup", async () => {
 						try {
 							const file = await fileHandle.getFile();
 							const data = await file.text();
+							// Parseamos el JSON y lo almacenamos
+							const levelData = JSON.parse(data) as PlacedEntity[];
+							console.log("levelData", levelData);
+							Manager.lastLoadedLevel = levelData;
+
 							this.blackboardManager.cleanBlackboard();
 							this.entityManager.loadState(data);
 						} catch (error) {
@@ -236,8 +265,8 @@ export class ConstructionEngineScene extends PixiScene {
 	 */
 	private async toggleLoadPanel(): Promise<void> {
 		if (this.loadPanelVisible) {
-			if (this.loadPanel && this.toolPaletteContainer.children.includes(this.loadPanel)) {
-				this.toolPaletteContainer.removeChild(this.loadPanel);
+			if (this.loadPanel && this.loadPanelContainer.children.includes(this.loadPanel)) {
+				this.loadPanelContainer.removeChild(this.loadPanel);
 				this.loadPanel = null;
 			}
 			this.loadPanelVisible = false;
@@ -267,6 +296,10 @@ export class ConstructionEngineScene extends PixiScene {
 		ScaleHelper.setScaleRelativeToIdeal(this.backgroundContainer, newW, newH, 1920, 1080, ScaleHelper.FIT);
 		this.backgroundContainer.x = newW / 2;
 		this.backgroundContainer.y = newH / 2;
+
+		ScaleHelper.setScaleRelativeToIdeal(this.loadPanelContainer, newW, newH, 1920, 1080, ScaleHelper.FIT);
+		this.loadPanelContainer.x = newW * 0.5;
+		this.loadPanelContainer.y = newH * 0.1;
 
 		ScaleHelper.setScaleRelativeToIdeal(this.toolPaletteContainer, newW * 1.6, newH * 1.6, 1920, 1080, ScaleHelper.FIT);
 		this.toolPaletteContainer.x = newW * 0.5;

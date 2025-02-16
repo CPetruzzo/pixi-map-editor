@@ -1,12 +1,12 @@
 // src/engine/scenes/ConstructionEngineScene/tools/ToolPalette.ts
 import type { Container } from "pixi.js";
 import { Graphics, Text } from "pixi.js";
-import { Manager } from "../../../..";
-import { ConstructionGameScene } from "../ConstructionGameScene";
 
 export class ToolPalette {
 	private container: Container;
 	private setToolCallback: (tool: string) => void;
+	// Referencia al botón de toggle
+	private toggleModeButton: Graphics | null = null;
 
 	constructor(container: Container, setToolCallback: (tool: string) => void) {
 		this.container = container;
@@ -25,13 +25,13 @@ export class ToolPalette {
 		this.createButton("🖼️ PNG", 360, 0, () => this.setToolCallback("exportPNG"));
 		this.createButton("🎮 Player", -480, 0, () => this.setToolCallback("player"));
 		this.createButton("🔀 Move", -480, 50, () => this.setToolCallback("playerSelect"));
-		this.createButton("🧪 Test", 480, 0, () => {
-			Manager.changeScene(ConstructionGameScene);
-		});
-		// this.createButton("💾 Save", 120, 50, () => this.setToolCallback("saveDirect"));
+		this.createButton("🧪 Test", 480, 0, () => this.setToolCallback("test"));
+		// Al crear el botón de toggle, lo guardamos en toggleModeButton
+		this.toggleModeButton = this.createButton("SideScroller", 480, 50, () => this.setToolCallback("toggleMode"));
 	}
 
-	public createButton(label: string, x: number, y: number, onClick: () => void): void {
+	// Ahora createButton devuelve el botón creado.
+	public createButton(label: string, x: number, y: number, onClick: () => void): Graphics {
 		const btn = new Graphics();
 		btn.beginFill(0x333333);
 		btn.drawRoundedRect(-50, -20, 100, 40, 10);
@@ -49,5 +49,15 @@ export class ToolPalette {
 		btn.interactive = true;
 		btn.on("pointerup", () => onClick());
 		this.container.addChild(btn);
+		return btn;
+	}
+
+	// Método para actualizar el texto del botón de toggle.
+	public updateToggleModeButtonText(newText: string): void {
+		if (this.toggleModeButton) {
+			// Asumimos que el primer hijo es el Text.
+			const text = this.toggleModeButton.children[0] as Text;
+			text.text = newText;
+		}
 	}
 }

@@ -1,3 +1,5 @@
+import { Manager } from "../../../..";
+
 // src/engine/scenes/ConstructionEngineScene/files/FileSystemManager.ts
 declare global {
 	interface Window {
@@ -67,6 +69,8 @@ export class FileSystemManager {
 					const text = await file.text();
 					callback(text);
 				};
+				console.log("Manager.lastLoadedLevel", Manager.lastLoadedLevel);
+
 				panel.appendChild(button);
 			}
 		}

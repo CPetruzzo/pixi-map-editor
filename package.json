@@ -1,10 +1,10 @@
 {
-  "name": "CachoPetruzzo",
+  "name": "pixi-map-editor",
   "version": "0.0.1",
   "description": "BunnyBox is a boilerplate/engine for pixijs. Descendant of the great killabunnies engine",
   "pwa": {
-    "name": "CachoPetruzzo",
-    "short_name": "CachoPetruzzo",
+    "name": "pixi-map-editor",
+    "short_name": "pixi-map-editor",
     "description": "My awesome Progressive Web App!",
     "background_color": "#ee0000"
   },
@@ -16,10 +16,7 @@
     "start:release": "webpack serve --config webpack.config.prod.js",
     "lint": "eslint src/**/*.ts --fix",
     "clean": "rimraf ./dist",
-    "check": "tsc --noEmit --skipLibCheck -p tsconfig.json",
-    "generateMap": "node ./.tools/CreateJsons.js",
-    "runTikTakTowServer": "node ./src/project/scenes/Multiplayer/Backend/server.js",
-    "runCarGameServer": "node ./src/project/scenes/CarGame/server.js"
+    "check": "tsc --noEmit --skipLibCheck -p tsconfig.json"
   },
   "languages": [
     "en",
@@ -84,6 +81,7 @@
     "stats.js": "^0.17.0",
     "stream-http": "^3.2.0",
     "tone": "^15.0.4",
+    "@pixi/interaction": "6.4.2",
     "tweedle.js": "2.1.0"
   }
 }
